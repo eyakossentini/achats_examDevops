@@ -11,6 +11,10 @@
 	<groupId>tn.esprit.rh</groupId>
 	<artifactId>achat</artifactId>
 	<version>1.0</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>demo</module>
+	</modules>
 	<name>achat</name>
 	<description>Projet pour le module DevOps</description>
 	<properties>
@@ -26,6 +30,13 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
+		<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.12</version> <!-- or the version compatible with your project -->
+    <scope>test</scope>
+</dependency>
+
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
@@ -128,7 +139,7 @@
 		<repository>
 			<id>Nexus</id>
 			<name> Nexus Repository </name>
-			<url>http://192.168.50.4:8081/repository/maven-releases/</url>
+			<url>http://172.17.0.1:8082/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
 </project>
