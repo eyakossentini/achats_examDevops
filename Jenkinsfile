@@ -48,7 +48,7 @@ pipeline {
 
          stage('Build Docker Image') {
                      steps {
-                         sh 'docker build -t hadilzakraoui:achat:1.0.0 .'
+                         sh 'docker build -t hadilzakraoui/achat:1.0.0 .'
                      }
          }
 
