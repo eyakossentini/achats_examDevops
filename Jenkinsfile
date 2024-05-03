@@ -39,11 +39,17 @@ pipeline {
                 }
             }
         }
-         stage('Deploy to Nexus') {
+         stage('Nexus') {
                     steps {
                         // Étape de déploiement vers Nexus en sautant les tests
                         sh 'mvn deploy -X -DskipTests'
                     }
                 }
+         stage('Build Docker Image') {
+                     steps {
+                         sh 'docker build -t hadilzakraoui:achat-1.0.jar .'
+                     }
+                 }
+             }
   }
  }
