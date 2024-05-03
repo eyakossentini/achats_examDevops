@@ -39,6 +39,7 @@ pipeline {
                 }
             }
         }
+
          stage('Deploy to Nexus') {
                     steps {
                         // Étape de déploiement vers Nexus en sautant les tests
@@ -46,11 +47,20 @@ pipeline {
                     }
          }
 
-         stage('Build Docker Image') {
+         stage('Docker Image') {
                      steps {
                          sh 'docker build -t hadilzakraoui/achat:1.0.0 .'
                      }
          }
 
-  }
+                 stage('DockerHub') {
+                     steps {
+                         withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'hadilzakraoui', passwordVariable: '14452252Hadil')]) {
+                             sh 'docker login -u hadilzakraoui -p 14452252Hadil'
+                             sh 'docker push hadilzakraoui/achat:1.0.0'
+                         }
+                     }
+                 }
+
+   }
  }
