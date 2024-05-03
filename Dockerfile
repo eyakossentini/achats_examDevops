@@ -1,14 +1,5 @@
-# Utiliser une image de base avec Java et Maven préinstallés
-FROM maven:3.6.3-openjdk-17-hadil AS build
-
-# Copier le code source dans l'image
-WORKDIR /app
-COPY . /app
-
-# Construire l'application avec Maven
-RUN mvn clean package
-
+FROM openjdk:17-jdk-alpine
 RUN apk add openjdk17
-
-# Exécuter l'application Spring Boot
-CMD ["java", "-jar", "target/achat-1.0.jar"]
+EXPOSE 8082
+ADD target/achat-1.0.jar achat-1.0.jar
+ENTRYPOINT ["java","-jar","/tachat-1.0.jar"]
