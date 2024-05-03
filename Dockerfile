@@ -35,7 +35,7 @@ pipeline {
                     sh 'mvn sonar:sonar \
                         -Dsonar.projectKey=achatProject_devops \
                         -Dsonar.host.url=http://192.168.50.4:9000 \
-                        -Dsonar.login=squ_95fbe028824259f02d380b2c81faa275930ab7bc'
+                        -Dsonar.login=squ_1dd8d7bb678d9998d88b3819ce107099472d7a21'
                 }
             }
         }
