@@ -62,11 +62,11 @@ pipeline {
                      }
                  }
 
-                 stage('Docker Compose') {
+               /*  stage('Docker Compose') {
                        steps {
                               sh 'docker-compose up -d'
                        }
-                 }
+                 }*/
 
    }
  }
