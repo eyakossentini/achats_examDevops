@@ -45,10 +45,27 @@ pipeline {
                         sh 'mvn deploy -X -DskipTests'
                     }
                 }
+         stage('Docker Image') {
+                     steps {
+                         sh 'docker build -t amirachartel/achat:1.0.0 .'
+                     }
+         }
 
+                 stage('DockerHub') {
+                     steps {
+                         withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'amirachartel', passwordVariable: 'amira2115')]) {
+                             sh 'docker login -u amirachartel -p amira2115'
+                             sh 'docker push amirachartel/achat:1.0.0'
+                         }
+                     }
+                 }
 
+                 stage('Docker Compose') {
+                       steps {
+                              sh 'docker-compose up -d'
+                       }
+                 }
 
-    }
-
-}
+   }
+ }
 
