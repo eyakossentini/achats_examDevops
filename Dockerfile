@@ -32,7 +32,10 @@ pipeline {
             steps {
                 // Exécution de l'analyse de code avec SonarQube
                 withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar'
+                    sh 'mvn sonar:sonar \
+                        -Dsonar.projectKey=timesheet_devops \
+                        -Dsonar.host.url=http://192.168.50.4:9000 \
+                        -Dsonar.login=a8f45dc77ff97dcb8f5f928c968514a14f91912a'
                 }
             }
         }
