@@ -13,6 +13,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * @author DELL
+ *
+ */
 @Entity
 @Getter
 @Setter
@@ -36,5 +40,39 @@ public class Stock implements Serializable {
 		this.qte = qte;
 		this.qteMin = qteMin;
 	}
+	
+	 // Getter and setter methods
+    public Long getIdStock() {
+        return idStock;
+    }
+
+    public void setIdStock(Long idStock) {
+        this.idStock = idStock;
+    }
+
+    public String getLibelleStock() {
+        return libelleStock;
+    }
+
+    public void setLibelleStock(String libelleStock) {
+        this.libelleStock = libelleStock;
+    }
+
+    public Integer getQte() {
+        return qte;
+    }
+
+    public void setQte(Integer qte) {
+        this.qte = qte;
+    }
+
+    public Integer getQteMin() {
+        return qteMin;
+    }
+
+    public void setQteMin(Integer qteMin) {
+        this.qteMin = qteMin;
+    }
+	
 
 }
