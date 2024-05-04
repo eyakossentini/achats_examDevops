@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 
 @ContextConfiguration(classes = {CategorieProduitServiceImpl.class})
     @ExtendWith(SpringExtension.class)
-    public class CategorieProduitTest {
+     class CategorieProduitTest {
         @MockBean
         private CategorieProduitRepository cr;
         @Autowired
