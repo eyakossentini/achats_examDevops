@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     stages {
         stage('Maven Clean & Compile') {
             steps {
@@ -18,7 +17,7 @@ pipeline {
 
         stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv('SonarQube') {
+
                  withSonarQubeEnv('SonarQube') {
                                     sh 'mvn sonar:sonar \
                                         -Dsonar.projectKey=achatProject_devops \
@@ -54,30 +53,5 @@ pipeline {
                          }
                      }
                  }
-                  stage('Run Docker Compose') {
-                                            steps {
-                                                script {
-                                                    // Perform Docker login if needed
-                                                    sh 'docker login -u ichrak.ouhibi@esprit.tn -p ichrakouh123'
-
-                                                     // Pull the Docker images if needed
-                                                     sh 'docker compose pull'
-
-                                                      // Run Docker Compose
-                                                   sh 'docker compose up -d'
-                                                }
-                                            }
-                                        }
-                                 stage('Prometheus') {
-                                            steps {
-                                                sh 'docker compose up -d prometheus-p'
-                                            }
-                                        }
-
-                                        stage('Grafana') {
-                                            steps {
-                                                sh 'docker compose up -d grafana'
-                                            }
-                                        }
     }
 }
