@@ -76,6 +76,17 @@ pipeline {
                                }
                            }
                        }
+                stage('Prometheus') {
+                           steps {
+                               sh 'docker compose up -d prometheus'
+                           }
+                       }
+
+                       stage('Grafana') {
+                           steps {
+                               sh 'docker compose up -d grafana'
+                           }
+                       }
 
    }
  }
