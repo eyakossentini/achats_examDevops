@@ -78,7 +78,7 @@ pipeline {
                        }
                 stage('Prometheus') {
                            steps {
-                               sh 'docker compose up -d prometheus'
+                               sh 'docker compose up -d prometheus-p'
                            }
                        }
 
