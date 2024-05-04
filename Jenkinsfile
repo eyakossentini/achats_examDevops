@@ -89,50 +89,47 @@ pipeline {
                        }
 
 
-                       stage('Email Notification') {
-                                 steps{
-                                     mail bcc: '', body: ''' Stage: GIT Pull
-                                     - Pulling from Git...
-                                     Stage: Maven Clean Compile
-                                     - Building Spring project...
 
-                                     Stage: Test - JUNIT/MOCKITO
-                                     - Testing Spring project...
+                        stages ('Email Notification') {
+                                steps{
+                                             mail bcc: '', body: ''' Stage: GIT Pull
+                                             - Pulling from Git...
+                                             Stage: Maven Clean Compile
+                                             - Building Spring project...
 
-                                     Stage: SonarQube Analysis
-                                     - Running Sonarqube analysis...
+                                             Stage: Test - JUNIT/MOCKITO
+                                             - Testing Spring project...
 
-                                     Stage: Deploy to Nexus
-                                     - Deploying to Nexus...
+                                             Stage: SonarQube Analysis
+                                             - Running Sonarqube analysis...
 
-                                     Stage: Build Docker Image
-                                     - Building Docker image for the application...
+                                             Stage: Deploy to Nexus
+                                             - Deploying to Nexus...
 
-                                     Stage: Push Docker Image
-                                     - Pushing Docker image to Docker Hub...
+                                             Stage: Build Docker Image
+                                             - Building Docker image for the application...
 
-                                     Stage: Docker Compose
-                                     - Running Docker Compose...
+                                             Stage: Push Docker Image
+                                             - Pushing Docker image to Docker Hub...
 
-                                     Stage: Monitoring Services G/P
-                                     - Starting Prometheus and Grafana...
+                                             Stage: Docker Compose
+                                             - Running Docker Compose...
 
-                                     Final Report: The pipeline has completed successfully. No action required ''', cc: '', from: '', replyTo: '', subject: 'Succès de la pipeline DevOps Project  ONESBENRHAIME-4TWIN1-G1', to: 'ones.benrhaime@esprit.tn, wafa.hidri@esprit.tn'
-                                 }
-                             }
+                                             Stage: Monitoring Services G/P
+                                             - Starting Prometheus and Grafana...
 
+                                             Final Report: The pipeline has completed successfully. No action required ''', cc: '', from: '', replyTo: '', subject: 'Succès de la pipeline DevOps Project HadilZakraoui', to: 'hadil.zakraoui@esprit.tn'
+                                         }
                            }
+
                            post {
                                success {
                                    echo 'Build successful! Deploying...'
-
                                }
                                failure {
                                    echo 'Build failed! Sending notification...'
-
                                }
                            }
 
-   }
    }
  }
