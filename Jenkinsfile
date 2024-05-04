@@ -59,6 +59,20 @@ pipeline {
                          }
                      }
                  }
+                                stage('Run Docker Compose') {
+                                            steps {
+                                                script {
+                                                    // Perform Docker login if needed
+                                                    sh 'docker login -u amirachartel-p amira2115'
+
+                                                     // Pull the Docker images if needed
+                                                     sh 'docker compose pull'
+
+                                                      // Run Docker Compose
+                                                   sh 'docker compose up -d'
+                                                }
+                                            }
+                                        }
 
 
 
