@@ -11,6 +11,7 @@ services:
       - MYSQL_DATABASE=achatdb
     volumes:
       - db:/var/lib/mysql
+
   app-achat:
     depends_on:
       - mysqldb
@@ -26,7 +27,20 @@ services:
       "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect"
       "spring.jpa.hibernate.ddl-auto"="update",
       }'
+
     stdin_open: true
     tty: true
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+
 volumes:
+  grafana_data:
   db:
+

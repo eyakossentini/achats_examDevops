@@ -62,11 +62,31 @@ pipeline {
                      }
                  }
 
-               /*  stage('Docker Compose') {
-                       steps {
-                              sh 'docker-compose up -d'
+               stage('Run Docker Compose') {
+                           steps {
+                               script {
+                                   // Perform Docker login if needed
+                                   sh 'docker login -u hadil.zakraoui@outlook.com -p 14452252Hadil'
+
+                                    // Pull the Docker images if needed
+                                    sh 'docker compose pull'
+
+                                     // Run Docker Compose
+                                  sh 'docker compose up -d'
+                               }
+                           }
                        }
-                 }*/
+              /*  stage('Prometheus') {
+                           steps {
+                               sh 'docker compose up -d prometheus-p'
+                           }
+                       }*/
+
+                       stage('Grafana') {
+                           steps {
+                               sh 'docker compose up -d grafana'
+                           }
+                       }
 
    }
  }
