@@ -90,7 +90,7 @@ pipeline {
 
 
 
-                        stages ('Email Notification') {
+                        stage ('Email Notification') {
                                 steps{
                                              mail bcc: '', body: ''' Stage: GIT Pull
                                              - Pulling from Git...
