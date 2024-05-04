@@ -76,11 +76,11 @@ pipeline {
                                }
                            }
                        }
-                stage('Prometheus') {
+              /*  stage('Prometheus') {
                            steps {
                                sh 'docker compose up -d prometheus-p'
                            }
-                       }
+                       }*/
 
                        stage('Grafana') {
                            steps {
